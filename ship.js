@@ -108,9 +108,7 @@ class Bullet {
     }
 
     removeObject() {
-        objs = _.remove(objs, function(n) {
-            return __.isEqual(n.pos, this.pos);
-        });
+        _.pull(objs, this);
     }
 
 }

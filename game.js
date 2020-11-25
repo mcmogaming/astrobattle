@@ -18,8 +18,8 @@ function setup() {
 function draw() {
     background(220);
     for (let i = 0; i < objs.length; i++) {
-        objs[i].physics();
         objs[i].draw();
+        objs[i].physics();
     }
     ship.physics();
     ship.draw();
