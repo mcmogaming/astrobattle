@@ -1,0 +1,8 @@
+Class: PhysicsEngine
+ParentClass: 
+SubClass:
+Collaborators:
+- GameObject
+
+Responsiblities:
+- Calculates all physics for all gameobjects

@@ -1,0 +1,7 @@
+Class: Animation
+ParentClass: 
+SubClass:
+Collaborators:
+
+Responsiblities:
+- Stores a list of animations that apply to parts of a GameObject

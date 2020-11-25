@@ -1,0 +1,10 @@
+Class: PhysicsEngine
+ParentClass: 
+SubClass:
+Collaborators:
+    - Animation
+    - GameObjectAnimation
+
+Responsiblities:
+- Stores the shapes that make the model
+- Allows you to move, roate, scale the shapes

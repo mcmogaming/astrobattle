@@ -1,0 +1,7 @@
+Class: GameRenderer
+ParentClass:
+SubClass:
+Collaborators:
+
+Responsiblities:
+- Draws things on the display
