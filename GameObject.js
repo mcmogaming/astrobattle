@@ -154,11 +154,3 @@ class GameShape {
     }
 
 }
-
-class BOJO {
-
-    constructor() {
-        this.a = 1;
-    }
-
-}
