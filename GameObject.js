@@ -15,7 +15,22 @@ class GameObject {
     }
 
     draw() {
+        for (let i = 0; i < this.shapes.length; i++) {
+            let s = this.shapes[i];
+            s.setPos(this.pos);
+            s.setRotation(this.rt);
+            s.draw();
+        }
+    }
 
+    rotateCW() {
+        this.rt += this.rtspeed;
+        //this.check_rotation();
+    }
+
+    rotateCCW() {
+        this.rt += -this.rtspeed;
+        //this.check_rotation();
     }
 
     rotate(rt) {
@@ -71,6 +86,7 @@ class GameObject {
     addShape(shape) {
         this.shapes.push(shape);
     }
+
 }
 
 class GameShape {
@@ -82,19 +98,43 @@ class GameShape {
         this.b = b;
         this.a = a;
 
+        this.x = 0;
+        this.y = 0;
+
+        this.rt = 0;
+
         this.bolVisible = false;
     }
 
     draw() {
         beginShape();
-        for (Vector p: this.points) {
-            vertex(p.x, p.y);
+        for (let i = 0; i < this.points.length; i++) {
+            let p = createVector(this.points[i].x, this.points[i].y);
+            p.rotate(this.rt);
+            vertex(p.x + this.x, p.y + this.y);
         }
         endShape(CLOSE);
     }
 
     setVisibility(state) {
         this.bolVisible = state;
+    }
+
+    setPos(vecPos) {
+        this.x = vecPos.x;
+        this.y = vecPos.y;
+    }
+
+    setRotation(rt) {
+        this.rt = rt;
+    }
+
+}
+
+class BOJO {
+
+    constructor() {
+        this.a = 1;
     }
 
 }
