@@ -9,6 +9,9 @@ class GameObject {
         this.rt = rt;
         this.rtspeed = Math.PI * (1 / 256);
         this.size = size;
+        this.slowDownRate = 0.95;
+
+        this.rtadj = 0;
 
         this.shapes = [];
 
@@ -18,7 +21,7 @@ class GameObject {
         for (let i = 0; i < this.shapes.length; i++) {
             let s = this.shapes[i];
             s.setPos(this.pos);
-            s.setRotation(this.rt);
+            s.setRotation(this.rt + this.rtadj);
             s.draw();
         }
     }
@@ -56,6 +59,10 @@ class GameObject {
         this.v.add(createVector(-this.a * Math.cos(this.rt), -this.a * Math.sin(this.rt)));
     }
 
+    slowMotion() {
+        this.v.mult(this.slowDownRate);
+    }
+
     physics() {
         this.pos.add(createVector(this.v.x * TIMESTEP, this.v.y * TIMESTEP));
         this.checkwallbounds();
@@ -87,6 +94,22 @@ class GameObject {
         this.shapes.push(shape);
     }
 
+    setRTAdjustment(rtadj) {
+        this.rtadj = rtadj;
+    }
+
+    setRotationSpeed(rtspeed) {
+        this.rtspeed = rtspeed;
+    }
+
+    setAcceleration(accel) {
+        this.a = accel;
+    }
+
+    setSlowDownRate(slowDownRate) {
+        this.slowDownRate = slowDownRate;
+    }
+
 }
 
 class GameShape {
@@ -107,6 +130,7 @@ class GameShape {
     }
 
     draw() {
+        fill(this.r, this.g, this.b);
         beginShape();
         for (let i = 0; i < this.points.length; i++) {
             let p = createVector(this.points[i].x, this.points[i].y);
